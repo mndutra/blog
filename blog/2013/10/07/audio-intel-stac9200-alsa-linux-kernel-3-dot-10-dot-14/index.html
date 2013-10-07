@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>title - Marcelo Blog</title>
+  <title>Audio Intel STAC9200 ALSA Linux Kernel 3.10.14 - Marcelo Blog</title>
   <meta name="author" content="Marcelo Nogueira Dutra">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Com atualização kernel 3.10.12, num Slackware, placa de audio Intel não subia o ALSA. Mas funcionava meia-boca em &ldquo;modo genérico&rdquo;, então &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mndutra.github.io/blog/blog/2013/10/07/title">
+  <link rel="canonical" href="http://mndutra.github.io/blog/blog/2013/10/07/audio-intel-stac9200-alsa-linux-kernel-3-dot-10-dot-14">
   <link href="/blog/favicon.png" rel="icon">
   <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="Marcelo Blog" type="application/atom+xml">
@@ -67,7 +66,7 @@
   
   <header>
     
-      <h1 class="entry-title">Title</h1>
+      <h1 class="entry-title">Audio Intel STAC9200 ALSA Linux Kernel 3.10.14</h1>
     
     
       <p class="meta">
@@ -83,14 +82,72 @@
   
 
 
-<time datetime="2013-10-07T00:50:00-03:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time>
+<time datetime="2013-10-07T02:24:00-03:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><p>Com atualização kernel 3.10.12, num Slackware, placa de audio Intel não subia o ALSA. Mas funcionava meia-boca em &ldquo;modo genérico&rdquo;, então voilá.
+Com atualização kernel 3.10.14, a dita cuja pirou.</p>
+
+<p>Como não poderia ser diferente a solução é simples:
+Um arquivo com nome qualquer (coloquei &ldquo;alsa.conf&rdquo;) no diretório &ldquo;/etc/modprobe.d&rdquo; com o seguinte conteúdo &ldquo;options snd-hda-intel model=auto&rdquo; resolveu.
+Done.</p>
+
+<p>Acredito o que mudará de caso para caso é o módulo e modelo.
+Neste caso &ldquo;snd_hda_intel&rdquo; e &ldquo;auto&rdquo; (dell d520)</p>
+
+<p>Uma listinha de hardwares e &ldquo;mençoes&rdquo;&hellip;e</p>
+
+<p>Neste caso é &ldquo;auto&rdquo; porquê!; lista &ndash;> <a href="https://www.kernel.org/doc/Documentation/sound/alsa/HD-Audio-Models.txt">https://www.kernel.org/doc/Documentation/sound/alsa/HD-Audio-Models.txt</a></p>
+
+<p>Tive que dar um
+ # rmmod snd_hda_intel</p>
+
+<p>e depois um
+ # modprobe snd_hda_intel</p>
+
+<p>E reiniciar</p>
+
+<p>HARDWARE EM QUESTÃO</p>
+
+<p>root@darkstar:~# uname -a
+Linux darkstar 3.10.14 #2 SMP x86_64 Intel&reg; Core&trade;2 CPU T7200 @ 2.00GHz GenuineIntel GNU/Linux</p>
+
+<p>root@darkstar:~# lspci -v
+00:1b.0 Audio device: Intel Corporation N10/ICH 7 Family High Definition Audio Controller (rev 01)</p>
+
+<pre><code>    Subsystem: Dell Device 01d4
+    Flags: bus master, fast devsel, latency 0, IRQ 42
+    Memory at efebc000 (64-bit, non-prefetchable) [size=16K]
+    Capabilities: [50] Power Management version 2
+    Capabilities: [60] MSI: Enable+ Count=1/1 Maskable- 64bit+
+    Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
+    Capabilities: [100] Virtual Channel
+    Capabilities: [130] Root Complex Link
+    Kernel driver in use: snd_hda_intel
+</code></pre>
+
+<p>root@darkstar:~# aplay -l
+<strong><strong> List of PLAYBACK Hardware Devices </strong></strong>
+card 0: Intel [HDA Intel], device 0: STAC9200 Analog [STAC9200 Analog]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: Intel [HDA Intel], device 1: STAC9200 Digital [STAC9200 Digital]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0</p>
+
+<p>VISUALIZANDO</p>
+
+<p>root@darkstar:~# cd /etc/modprobe.d/</p>
+
+<p>root@darkstar:/etc/modprobe.d# ls
+README  alsa.conf</p>
+
+<p>root@darkstar:/etc/modprobe.d# cat alsa.conf
+options snd-hda-intel model=auto</p>
 </div>
 
 
@@ -113,7 +170,7 @@
   
 
 
-<time datetime="2013-10-07T00:50:00-03:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time>
+<time datetime="2013-10-07T02:24:00-03:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time>
       
 
 
@@ -121,7 +178,7 @@
     
       <div class="sharing">
   
-  <a href="/blog//twitter.com/share" class="twitter-share-button" data-url="http://mndutra.github.io/blog/blog/2013/10/07/title/" data-via="" data-counturl="http://mndutra.github.io/blog/blog/2013/10/07/title/" >Tweet</a>
+  <a href="/blog//twitter.com/share" class="twitter-share-button" data-url="http://mndutra.github.io/blog/blog/2013/10/07/audio-intel-stac9200-alsa-linux-kernel-3-dot-10-dot-14/" data-via="" data-counturl="http://mndutra.github.io/blog/blog/2013/10/07/audio-intel-stac9200-alsa-linux-kernel-3-dot-10-dot-14/" >Tweet</a>
   
   
   
@@ -130,8 +187,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/blog/2013/10/07/title/" title="Previous Post: title">&laquo; title</a>
       
-        <a class="basic-alignment right" href="/blog/blog/2013/10/07/audio-intel-stac9200-alsa-linux-kernel-3-dot-10-dot-14/" title="Next Post: Audio Intel STAC9200 ALSA Linux Kernel 3.10.14">Audio Intel STAC9200 ALSA Linux Kernel 3.10.14 &raquo;</a>
       
     </p>
   </footer>
