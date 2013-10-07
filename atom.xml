@@ -4,7 +4,7 @@
   <title><![CDATA[Marcelo Blog]]></title>
   <link href="http://mndutra.github.io/blog/atom.xml" rel="self"/>
   <link href="http://mndutra.github.io/blog/"/>
-  <updated>2013-10-07T02:40:56-03:00</updated>
+  <updated>2013-10-07T02:53:03-03:00</updated>
   <id>http://mndutra.github.io/blog/</id>
   <author>
     <name><![CDATA[Marcelo Nogueira Dutra]]></name>
@@ -31,55 +31,49 @@ Done.</p>
 <p>Acredito o que mudará de caso para caso é o módulo e modelo.</br>
 Neste caso &ldquo;snd_hda_intel&rdquo; e &ldquo;auto&rdquo; (dell d520)</p>
 
-<p>Uma listinha de hardwares e &ldquo;mençoes&rdquo;&hellip;e</p>
+<p>Porquê &ldquo;auto&rdquo;? Listinha de hardwares &ndash;> <a href="https://www.kernel.org/doc/Documentation/sound/alsa/HD-Audio-Models.txt">https://www.kernel.org/doc/Documentation/sound/alsa/HD-Audio-Models.txt</a></p>
 
-<p>Neste caso é &ldquo;auto&rdquo; porquê!; lista &ndash;> <a href="https://www.kernel.org/doc/Documentation/sound/alsa/HD-Audio-Models.txt">https://www.kernel.org/doc/Documentation/sound/alsa/HD-Audio-Models.txt</a></p>
-
-<p>Tive que dar um
- # rmmod snd_hda_intel</p>
-
-<p>e depois um
- # modprobe snd_hda_intel</p>
+<p>Tive que dar um<br /># rmmod snd_hda_intel<br />e depois um<br /># modprobe snd_hda_intel</p>
 
 <p>E reiniciar</p>
 
 <p>HARDWARE EM QUESTÃO</p>
 
-<p>root@darkstar:~# uname -a
-Linux darkstar 3.10.14 #2 SMP x86_64 Intel&reg; Core&trade;2 CPU T7200 @ 2.00GHz GenuineIntel GNU/Linux</p>
+<pre><code>root@darkstar:~# uname -a
+Linux darkstar 3.10.14 #2 SMP x86_64 Intel(R) Core(TM)2 CPU T7200 @ 2.00GHz GenuineIntel GNU/Linux
 
-<p>root@darkstar:~# lspci -v
-00:1b.0 Audio device: Intel Corporation N10/ICH 7 Family High Definition Audio Controller (rev 01)</p>
+root@darkstar:~# lspci -v
+00:1b.0 Audio device: Intel Corporation N10/ICH 7 Family High Definition Audio Controller (rev 01)
+Subsystem: Dell Device 01d4
+Flags: bus master, fast devsel, latency 0, IRQ 42
+Memory at efebc000 (64-bit, non-prefetchable) [size=16K]
+Capabilities: [50] Power Management version 2
+Capabilities: [60] MSI: Enable+ Count=1/1 Maskable- 64bit+
+Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
+Capabilities: [100] Virtual Channel
+Capabilities: [130] Root Complex Link
+Kernel driver in use: snd_hda_intel
 
-<pre><code>    Subsystem: Dell Device 01d4
-    Flags: bus master, fast devsel, latency 0, IRQ 42
-    Memory at efebc000 (64-bit, non-prefetchable) [size=16K]
-    Capabilities: [50] Power Management version 2
-    Capabilities: [60] MSI: Enable+ Count=1/1 Maskable- 64bit+
-    Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
-    Capabilities: [100] Virtual Channel
-    Capabilities: [130] Root Complex Link
-    Kernel driver in use: snd_hda_intel
-</code></pre>
-
-<p>root@darkstar:~# aplay -l
-<strong><strong> List of PLAYBACK Hardware Devices </strong></strong>
+root@darkstar:~# aplay -l
+** List of PLAYBACK Hardware Devices **
 card 0: Intel [HDA Intel], device 0: STAC9200 Analog [STAC9200 Analog]
-  Subdevices: 1/1
-  Subdevice #0: subdevice #0
+Subdevices: 1/1
+Subdevice #0: subdevice #0
 card 0: Intel [HDA Intel], device 1: STAC9200 Digital [STAC9200 Digital]
-  Subdevices: 1/1
-  Subdevice #0: subdevice #0</p>
+Subdevices: 1/1
+Subdevice #0: subdevice #0
+</code></pre>
 
 <p>VISUALIZANDO</p>
 
-<p>root@darkstar:~# cd /etc/modprobe.d/</p>
+<pre><code>root@darkstar:~# cd /etc/modprobe.d/
 
-<p>root@darkstar:/etc/modprobe.d# ls
-README  alsa.conf</p>
+root@darkstar:/etc/modprobe.d# ls
+README  alsa.conf
 
-<p>root@darkstar:/etc/modprobe.d# cat alsa.conf
-options snd-hda-intel model=auto</p>
+root@darkstar:/etc/modprobe.d# cat alsa.conf 
+options snd-hda-intel model=auto
+</code></pre>
 ]]></content>
   </entry>
   
