@@ -9,7 +9,7 @@
   <meta name="author" content="Marcelo Nogueira Dutra">
 
   
-  <meta name="description" content="Com atualização kernel 3.10.12, num Slackware, placa de audio Intel não subia o ALSA. Mas funcionava meia-boca em &ldquo;modo genérico&rdquo;, então &hellip;">
+  <meta name="description" content="Com atualização kernel 3.10.12, num Slackware, placa de audio Intel não subia o ALSA. Mas funcionava meia-boca em &#8220;modo genérico&#8221;, então &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,8 +89,11 @@
   </header>
 
 
-<div class="entry-content"><p>Com atualização kernel 3.10.12, num Slackware, placa de audio Intel não subia o ALSA. Mas funcionava meia-boca em &ldquo;modo genérico&rdquo;, então voilá.
-Com atualização kernel 3.10.14, a dita cuja pirou.</p>
+<div class="entry-content"><p>Com atualização kernel 3.10.12, num Slackware, placa de audio Intel não subia o ALSA. Mas funcionava meia-boca em &#8220;modo genérico&#8221;, então voilá.</p>
+
+
+<p>Com atualização kernel 3.10.14, a dita cuja pirou.</p>
+
 
 <p>Como não poderia ser diferente a solução é simples:
 Um arquivo com nome qualquer (coloquei &ldquo;alsa.conf&rdquo;) no diretório &ldquo;/etc/modprobe.d&rdquo; com o seguinte conteúdo &ldquo;options snd-hda-intel model=auto&rdquo; resolveu.

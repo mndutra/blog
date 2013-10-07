@@ -4,7 +4,7 @@
   <title><![CDATA[Marcelo Blog]]></title>
   <link href="http://mndutra.github.io/blog/atom.xml" rel="self"/>
   <link href="http://mndutra.github.io/blog/"/>
-  <updated>2013-10-07T02:28:19-03:00</updated>
+  <updated>2013-10-07T02:37:44-03:00</updated>
   <id>http://mndutra.github.io/blog/</id>
   <author>
     <name><![CDATA[Marcelo Nogueira Dutra]]></name>
@@ -18,8 +18,11 @@
     <link href="http://mndutra.github.io/blog/blog/2013/10/07/audio-intel-stac9200-alsa-linux-kernel-3-dot-10-dot-14/"/>
     <updated>2013-10-07T02:24:00-03:00</updated>
     <id>http://mndutra.github.io/blog/blog/2013/10/07/audio-intel-stac9200-alsa-linux-kernel-3-dot-10-dot-14</id>
-    <content type="html"><![CDATA[<p>Com atualização kernel 3.10.12, num Slackware, placa de audio Intel não subia o ALSA. Mas funcionava meia-boca em &ldquo;modo genérico&rdquo;, então voilá.
-Com atualização kernel 3.10.14, a dita cuja pirou.</p>
+    <content type="html"><![CDATA[<p>Com atualização kernel 3.10.12, num Slackware, placa de audio Intel não subia o ALSA. Mas funcionava meia-boca em &#8220;modo genérico&#8221;, então voilá.</p>
+
+
+<p>Com atualização kernel 3.10.14, a dita cuja pirou.</p>
+
 
 <p>Como não poderia ser diferente a solução é simples:
 Um arquivo com nome qualquer (coloquei &ldquo;alsa.conf&rdquo;) no diretório &ldquo;/etc/modprobe.d&rdquo; com o seguinte conteúdo &ldquo;options snd-hda-intel model=auto&rdquo; resolveu.
