@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://mndutra.github.io/blog/robots.txt</loc>
+        <lastmod>2013-10-06T23:03:34-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mndutra.github.io/blog/blog/archives/</loc>
+        <lastmod>2013-10-06T23:03:34-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mndutra.github.io/blog/</loc>
+        <lastmod>2013-10-06T23:03:34-03:00</lastmod>
+    </url>
+</urlset>
